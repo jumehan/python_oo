@@ -10,7 +10,7 @@ class WordFinder:
         self.read_list()
 
     def __repr__(self):
-        ...
+        return f"<WordFinder file_path={self.file_path}>"
 
     def random(self):
         self.word = choice(self.word_list)
@@ -21,3 +21,8 @@ class WordFinder:
         f = open(self.file_path)
         self.word_list = f.readlines()
         print(f"{len(self.word_list)} words read")
+
+class SpecialWordFinder(WordFinder):
+    """ Special Word Finder: finds random words from a dictionary
+    but omits blank lines and comments """
+    def __init__(self)
