@@ -23,6 +23,7 @@ class WordFinder:
         """Reads file and creates list of lines"""
         f = open(self.file_path)
         self.word_list = f.readlines()
+        #
         print(f"{len(self.word_list)} words read")
 
 class SpecialWordFinder(WordFinder):
@@ -38,6 +39,7 @@ class SpecialWordFinder(WordFinder):
         Returns list of lines"""
         f = open(self.file_path)
 
+        #comprehension
         for line in f:
             if not line.startswith("#") and not line.startswith("\n"):
                 self.word_list.append(line)

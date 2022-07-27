@@ -23,7 +23,7 @@ class SerialGenerator:
         self.serial_code = start-1
 
     def __repr__(self):
-        return f"<SerialGenerator start={self.start}>"
+        return f"<SerialGenerator start={self.start}, next={self.generate()}>"
 
     def reset(self):
         self.serial_code = self.start-1
