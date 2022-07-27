@@ -16,14 +16,13 @@ class WordFinder:
     def random(self):
         """Returns random word from word list"""
         self.word = choice(self.word_list)
-        self.word = self.word.replace("\n", "")
         return self.word
 
     def read_list(self):
         """Reads file and creates list of lines"""
         f = open(self.file_path)
         self.word_list = f.readlines()
-        #
+        self.word_list = [line.replace("\n", "") for line in self.word_list]
         print(f"{len(self.word_list)} words read")
 
 class SpecialWordFinder(WordFinder):
@@ -33,15 +32,12 @@ class SpecialWordFinder(WordFinder):
     def __init__(self,file_path):
         super().__init__(file_path)
 
-    
+
     def read_list(self):
         """Manually loops over file to remove comments and blank lines
         Returns list of lines"""
         f = open(self.file_path)
 
-        #comprehension
-        for line in f:
-            if not line.startswith("#") and not line.startswith("\n"):
-                self.word_list.append(line)
+        self.word_list = [line for line in f if not line.startswith("#") and not line.startswith("\n")]
 
         print(f"{len(self.word_list)} words read")
